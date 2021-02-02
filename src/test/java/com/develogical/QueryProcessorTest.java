@@ -38,7 +38,22 @@ public class QueryProcessorTest {
     }
     
     @Test
+    public void knowsProds() throws Exception {
+        assertEquals(queryProcessor.process("what is 5 multiplied by 8"), "40");
+    }
+
+    @Test
     public void largestNumber() throws Exception {
 	assertEquals(queryProcessor.process("which of the following numbers is the largest:10,20,5"), "20"); 
+    }
+
+    @Test
+    public void knowsSquareCubeSingle() throws Exception {
+        assertEquals(queryProcessor.process("what square cube 1"), "1");
+    }
+
+    @Test
+    public void knowsSquareCubeMultiple() throws Exception {
+        assertEquals(queryProcessor.process("what square cube 64 1"), "64, 1");
     }
 }

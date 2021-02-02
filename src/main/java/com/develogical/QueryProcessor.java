@@ -7,6 +7,37 @@ import java.lang.Math;
 
 public class QueryProcessor {
 
+    static Boolean perfectCube(int N)
+    {
+        int cube_root;
+        cube_root = (int)Math.round(Math.cbrt(N));
+     
+        // If cube of cube_root is equals to N,
+        // then print Yes Else print No
+        if (cube_root * cube_root * cube_root == N) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    static Boolean perfectSquare(int N)
+    {
+        int sqrt;
+        sqrt = (int)Math.round(Math.sqrt(N));
+     
+        // If cube of cube_root is equals to N,
+        // then print Yes Else print No
+        if (sqrt * sqrt == N) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+        
+
     public String process(String query) {
         if (query.toLowerCase().contains("shakespeare")) {
             return "William Shakespeare (26 April 1564 - 23 April 1616) was an " +
@@ -50,20 +81,39 @@ public class QueryProcessor {
             }
             return String.valueOf(max);
         }
-        // if (query.contains("square") && query.contains("cube")){
-        //     String str = query.replaceAll("[^-?0-9]+", " "); 
-        //     List<String> numbersString = Arrays.asList(str.trim().split(" "));
-        //     List<Integer> numbers = new ArrayList<>();
-        //     for(String s : numbersString) {
-        //         numbers.add(Integer.valueOf(s));
-        //     }
-        //     List<Integer> square_cube = new ArrayList<>();
-        //     for(int no : numbers){
-        //         if (Math.sqrt((double) int) == )
+        if (query.contains("square") && query.contains("cube")){
+            String space = "";
+            String output = "";
+            String str = query.replaceAll("[^-?0-9]+", " "); 
+            List<String> numbersString = Arrays.asList(str.trim().split(" "));
+            List<Integer> numbers = new ArrayList<>();
+            for(String s : numbersString) {
+                numbers.add(Integer.valueOf(s));
+            }
+            List<Integer> square_cube = new ArrayList<>();
+            for(int no : numbers){
+                if (perfectCube(no) && perfectSquare(no)){
+                    output += space;
+                    output += String.valueOf(no);
+                    space = ", ";
+                }
 
-        //     }
-        //     return sum.toString();
-        // }
+            }
+            return output;
+        }
+        if (query.contains("multiplied")){
+            String str = query.replaceAll("[^-?0-9]+", " "); 
+            List<String> numbersString = Arrays.asList(str.trim().split(" "));
+            List<Integer> numbers = new ArrayList<>();
+            for(String s : numbersString) {
+                numbers.add(Integer.valueOf(s));
+            }
+            Integer prod = 1;
+            for(int no : numbers){
+                prod *= no;
+            }
+            return prod.toString();
+        }
         return "";
     }
 }

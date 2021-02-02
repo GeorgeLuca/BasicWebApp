@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 public class QueryProcessorTest {
@@ -26,7 +27,12 @@ public class QueryProcessorTest {
     }
 
     @Test
-    public void sendsPropperName() throws Exception {
+    public void knowsName() throws Exception {
         assertThat(queryProcessor.process("what is your name"), containsString("MissingTheRibbonGuy"));
+    }
+
+    @Test
+    public void knowsSums() throws Exception {
+        assertEquals(queryProcessor.process("what is 5 plus 1 plus 8"), "14");
     }
 }

@@ -1,5 +1,9 @@
 package com.develogical;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class QueryProcessor {
 
     public String process(String query) {
@@ -18,6 +22,20 @@ public class QueryProcessor {
         }
         if (query.toLowerCase().contains("what is your name")) {
             return "MissingTheRibbonGuy";
+        }
+        if (query.contains("plus")){
+            String str = query.replaceAll("[^-?0-9]+", " "); 
+            List<String> numbersString = Arrays.asList(str.trim().split(" "));
+            System.out.println(numbersString);
+            List<Integer> numbers = new ArrayList<>();
+            for(String s : numbersString) {
+                numbers.add(Integer.valueOf(s));
+            }
+            Integer sum = 0;
+            for(int no : numbers){
+                sum += no;
+            }
+            return sum.toString();
         }
         return "";
     }

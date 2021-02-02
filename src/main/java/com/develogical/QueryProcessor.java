@@ -68,6 +68,19 @@ public class QueryProcessor {
             }
             return sum.toString();
         }
+        if (query.contains("minus")){
+            String str = query.replaceAll("[^-?0-9]+", " ");
+            List<String> numbersString = Arrays.asList(str.trim().split(" "));
+            List<Integer> numbers = new ArrayList<>();
+            for(String s : numbersString) {
+                numbers.add(Integer.valueOf(s));
+            }
+            Integer dif = 2 * numbers.get(0);
+            for(int no : numbers){
+                dif -= no;
+            }
+            return dif.toString();
+        }
         if (query.toLowerCase().contains("largest")) {
             String str = query.replaceAll("[^-?0-9]+", " "); 
             List<String> numbersString = Arrays.asList(str.trim().split(" "));

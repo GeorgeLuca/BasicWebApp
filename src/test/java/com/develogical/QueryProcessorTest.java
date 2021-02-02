@@ -36,6 +36,11 @@ public class QueryProcessorTest {
     public void knowsSums() throws Exception {
         assertEquals(queryProcessor.process("what is 5 plus 1 plus 8"), "14");
     }
+
+    @Test
+    public void knowsDiff() throws Exception {
+        assertEquals(queryProcessor.process("what is 5 minus 1"), "4");
+    }
     
     @Test
     public void knowsProds() throws Exception {

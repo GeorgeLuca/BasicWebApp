@@ -16,6 +16,9 @@ public class QueryProcessor {
         if (query.toLowerCase().contains("meme")) {
             return "Some dope meme ";
         }
+        if (query.toLowerCase().contains("what is your name")) {
+            return "MissingTheRibbonGuy";
+        }
         return "";
     }
 }

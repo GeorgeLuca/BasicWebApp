@@ -3,6 +3,7 @@ package com.develogical;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.lang.Math;
 
 public class QueryProcessor {
 
@@ -37,15 +38,32 @@ public class QueryProcessor {
             return sum.toString();
         }
         if (query.toLowerCase().contains("largest")) {
-            String[] parts = query.split(":");
-            String numbers = parts[1];
-            String[] numbers_list = numbers.split(",");
+            String str = query.replaceAll("[^-?0-9]+", " "); 
+            List<String> numbersString = Arrays.asList(str.trim().split(" "));
+            List<Integer> numbers = new ArrayList<>();
+            for(String s : numbersString) {
+                numbers.add(Integer.valueOf(s));
+            }
             Integer max = Integer.MIN_VALUE;
-            for (String elem : numbers_list) {
-            max = Math.max(Integer.parseInt(elem.trim()), max);
+            for (Integer elem : numbers) {
+                max = Math.max(elem, max);
             }
             return String.valueOf(max);
         }
+        // if (query.contains("square") && query.contains("cube")){
+        //     String str = query.replaceAll("[^-?0-9]+", " "); 
+        //     List<String> numbersString = Arrays.asList(str.trim().split(" "));
+        //     List<Integer> numbers = new ArrayList<>();
+        //     for(String s : numbersString) {
+        //         numbers.add(Integer.valueOf(s));
+        //     }
+        //     List<Integer> square_cube = new ArrayList<>();
+        //     for(int no : numbers){
+        //         if (Math.sqrt((double) int) == )
+
+        //     }
+        //     return sum.toString();
+        // }
         return "";
     }
 }

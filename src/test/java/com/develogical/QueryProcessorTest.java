@@ -6,6 +6,7 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertEquals;
 
 public class QueryProcessorTest {
 
@@ -34,5 +35,10 @@ public class QueryProcessorTest {
     @Test
     public void knowsSums() throws Exception {
         assertEquals(queryProcessor.process("what is 5 plus 1 plus 8"), "14");
+    }
+    
+    @Test
+    public void largestNumber() throws Exception {
+	assertEquals(queryProcessor.process("which of the following numbers is the largest:10,20,5"), "20"); 
     }
 }

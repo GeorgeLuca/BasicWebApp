@@ -26,7 +26,6 @@ public class QueryProcessor {
         if (query.contains("plus")){
             String str = query.replaceAll("[^-?0-9]+", " "); 
             List<String> numbersString = Arrays.asList(str.trim().split(" "));
-            System.out.println(numbersString);
             List<Integer> numbers = new ArrayList<>();
             for(String s : numbersString) {
                 numbers.add(Integer.valueOf(s));
@@ -36,6 +35,16 @@ public class QueryProcessor {
                 sum += no;
             }
             return sum.toString();
+        }
+        if (query.toLowerCase().contains("largest")) {
+            String[] parts = query.split(":");
+            String numbers = parts[1];
+            String[] numbers_list = numbers.split(",");
+            Integer max = Integer.MIN_VALUE;
+            for (String elem : numbers_list) {
+            max = Math.max(Integer.parseInt(elem.trim()), max);
+            }
+            return String.valueOf(max);
         }
         return "";
     }

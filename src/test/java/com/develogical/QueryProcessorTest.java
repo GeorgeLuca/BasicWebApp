@@ -56,4 +56,9 @@ public class QueryProcessorTest {
     public void knowsSquareCubeMultiple() throws Exception {
         assertEquals(queryProcessor.process("what square cube 64 1"), "64, 1");
     }
+
+    @Test
+    public void knowsPrimes() throws Exception {
+        assertEquals(queryProcessor.process("which are primes 1, 5, 2"), "5, 2");
+    }
 }

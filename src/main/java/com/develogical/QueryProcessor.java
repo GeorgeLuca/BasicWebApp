@@ -114,6 +114,41 @@ public class QueryProcessor {
             }
             return prod.toString();
         }
+        if (query.contains("primes")){
+            String str = query.replaceAll("[^-?0-9]+", " ");
+            List<String> numbersString = Arrays.asList(str.trim().split(" "));
+            List<Integer> numbers = new ArrayList<>();
+
+            String space = "";
+            String output = "";
+
+            for(String s : numbersString) {
+                numbers.add(Integer.valueOf(s));
+            }
+
+            for(Integer x : numbers){
+                boolean flag = false;
+
+                if (x == 1)
+                    continue;
+
+                for (int i = 2; i <= x / 2; i++) {
+                    if(x % i == 0){
+                        flag = true;
+                        break;
+                    }
+                }
+
+                if(!flag){
+                    output += space;
+                    output += String.valueOf(x);
+                    space = ", ";
+                }
+            }
+
+            return output;
+
+        }
         return "";
     }
 }

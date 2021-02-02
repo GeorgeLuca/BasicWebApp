@@ -5,6 +5,7 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertEquals;
 
 public class QueryProcessorTest {
 
@@ -28,5 +29,10 @@ public class QueryProcessorTest {
     @Test
     public void sendsPropperName() throws Exception {
         assertThat(queryProcessor.process("what is your name"), containsString("MissingTheRibbonGuy"));
+    }
+
+    @Test
+    public void largestNumber() throws Exception {
+	assertEquals(queryProcessor.process("which of the following numbers is the largest:10,20,5"), 20); 
     }
 }

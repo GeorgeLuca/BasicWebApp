@@ -19,6 +19,16 @@ public class QueryProcessor {
         if (query.toLowerCase().contains("what is your name")) {
             return "MissingTheRibbonGuy";
         }
+	if (query.toLowerCase().contains("largest")) {
+	    String[] parts = query.split(":");
+	    String numbers = parts[1];
+	    String[] numbers_list = numbers.split(",");
+	    int max = Integer.MIN_VALUE;
+	    for (String elem : numbers_list) {
+		max = Math.max(String.valueOf(elem), max);
+	    }
+	    return max;
+	}
         return "";
     }
 }
